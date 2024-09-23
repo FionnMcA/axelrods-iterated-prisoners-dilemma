@@ -1,0 +1,39 @@
+,Always Cooperate,Always Defect
+,c,d
+,c,d
+,c,d
+,c,d
+,c,d
+,c,d
+,c,d
+,c,d
+,c,d
+,c,d
+Total,0,50
+
+,Always Cooperate,Tit For Tat
+,c,c
+,c,c
+,c,c
+,c,c
+,c,c
+,c,c
+,c,c
+,c,c
+,c,c
+,c,c
+Total,30,30
+
+,Always Defect,Tit For Tat
+,d,c
+,d,d
+,d,d
+,d,d
+,d,d
+,d,d
+,d,d
+,d,d
+,d,d
+,d,d
+Total,14,9
+

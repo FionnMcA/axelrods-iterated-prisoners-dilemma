@@ -1,16 +1,26 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from itertools import combinations
+from titfortat import TitForTat
+from alwaysc import AlwaysC
+from alwaysd import AlwaysD
+from prisonersdilemma import PrisonersDilemma
 
 
-# Press the green button in the gutter to run the script.
+def play_all_strategies():
+    strategies = [
+        AlwaysC(),
+        AlwaysD(),
+        TitForTat()
+    ]
+
+    for strategy1, strategy2 in combinations(strategies, 2):
+        if hasattr(strategy1, 'set_player_number'):
+            strategy1.set_player_number(1)
+        if hasattr(strategy2, 'set_player_number'):
+            strategy2.set_player_number(2)
+
+        prisoner_dilemma = PrisonersDilemma(strategy1, strategy2, 10)
+        prisoner_dilemma.play_game()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    play_all_strategies()

@@ -2,6 +2,9 @@ from strategy import Strategy
 
 
 class ReverseTitForTat(Strategy):
+    """
+        Cooperates first then does the opposite of the opponent's last move
+    """
 
     def __init__(self):
         self.player_number = None

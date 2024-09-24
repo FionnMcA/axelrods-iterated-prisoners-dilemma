@@ -1,7 +1,9 @@
 from strategy import Strategy
 
-# Zig Zag but start by defecting
 class ReverseZigZag(Strategy):
+    """
+        Starts with a defect then cooperates and defects every second move
+    """
 
     def player_move(self, history):
         if not history:

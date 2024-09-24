@@ -2,6 +2,11 @@ from strategy import Strategy
 
 
 class Pavlov(Strategy):
+    """
+        The Pavlov strategy, also known as Win-Stay, Lose-Shift, operates based on the outcome of the previous round.
+        The strategy adjusts its move depending on whether it "won" or "lost" in the previous round. It tries to
+        repeat successful moves and switches when unsuccessful.
+    """
 
     def __init__(self):
         self.player_number = None

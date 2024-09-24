@@ -2,6 +2,9 @@ from strategy import Strategy
 
 
 class TitForTat(Strategy):
+    """
+        Tit for Tat (if the opponent defects retaliate once)
+    """
 
     def __init__(self):
         self.player_number = None

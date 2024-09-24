@@ -1,8 +1,10 @@
 from strategy import Strategy
 
 
-# Hold Grudges
 class Friedman(Strategy):
+    """
+        Cooperates but once the opponent defects, it will only defect
+    """
 
     def __init__(self):
         self.player_number = None

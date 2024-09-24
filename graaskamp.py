@@ -2,6 +2,9 @@ from strategy import Strategy
 
 
 class Graaskamp(Strategy):
+    """
+        Tit for tat but every 25 rounds defect - sneaky
+    """
 
     def __init__(self):
         self.player_number = None

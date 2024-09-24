@@ -2,6 +2,10 @@ from strategy import Strategy
 
 
 class Grofman(Strategy):
+    """
+        Responds based on the opponent's behavior over the last 7 moves.
+        The strategy cooperates by default but can enter a "grudge mode" if the opponent defects often
+    """
 
     def __init__(self):
         self.player_number = None

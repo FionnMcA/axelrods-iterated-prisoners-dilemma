@@ -1,4 +1,5 @@
 import csv
+import random
 from itertools import product
 from titfortat import TitForTat
 from alwaysc import AlwaysC
@@ -21,6 +22,8 @@ from zigzag import ZigZag
 from reversezigzag import ReverseZigZag
 from titforthreetats import TitForThreeTats
 from twotitsfortat import TwoTitsForTat
+from defectionpercentage import DefectionPercentage
+from generoustitfortwotats import GenerousTitForTwoTats
 
 
 def play_all_strategies():
@@ -44,8 +47,13 @@ def play_all_strategies():
         ZigZag(),
         ReverseZigZag(),
         TitForThreeTats(),
-        TwoTitsForTat()
+        TwoTitsForTat(),
+        DefectionPercentage(),
+        GenerousTitForTwoTats()
     ]
+
+    # It's important that we don't know the number of rounds
+    rounds = random.randint(250, 500)
 
     total_results = {
         strategy.get_name(): {
@@ -62,7 +70,7 @@ def play_all_strategies():
         if hasattr(strategy2, 'set_player_number'):
             strategy2.set_player_number(2)
 
-        prisoner_dilemma = PrisonersDilemma(strategy1, strategy2, 500)
+        prisoner_dilemma = PrisonersDilemma(strategy1, strategy2, rounds)
         p1_points, p2_points = prisoner_dilemma.play_game()
 
         total_results[strategy1.get_name()]['total_points'] += p1_points
@@ -75,6 +83,7 @@ def play_all_strategies():
         elif p2_points > p1_points:
             total_results[strategy2.get_name()]['wins'] += 1
 
+    # Write the totals to the csv file
     header_written = False
     for strategy, data in total_results.items():
         avg_points = round(data['total_points'] / data['games_played'], 2)

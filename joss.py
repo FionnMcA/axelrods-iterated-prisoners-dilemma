@@ -1,7 +1,11 @@
 from strategy import Strategy
 import random
 
+
 class Joss(Strategy):
+    """
+        Tit for tat with a 10% chance of defecting - sneaky
+    """
 
     def __init__(self):
         self.player_number = None

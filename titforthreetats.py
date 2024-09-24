@@ -2,6 +2,9 @@ from strategy import Strategy
 
 
 class TitForThreeTats(Strategy):
+    """
+        only retaliate if the opponent defected 3 times in a row
+    """
 
     def __init__(self):
         self.player_number = None

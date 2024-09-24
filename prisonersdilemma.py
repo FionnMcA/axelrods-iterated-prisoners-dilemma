@@ -2,14 +2,24 @@ import csv
 
 
 class PrisonersDilemma:
+    # The tuple represents the moves ('c' for cooperate, 'd' for defect) and the resulting points for Player 1 and
+    # Player 2.
     outputs = {
-        ('c', 'c'): (3, 3),
-        ('c', 'd'): (0, 5),
-        ('d', 'c'): (5, 0),
-        ('d', 'd'): (1, 1)
+        ('c', 'c'): (3, 3),  # Both cooperate: each gets 3 points.
+        ('c', 'd'): (0, 5),  # Player 1 cooperates, Player 2 defects: Player 1 gets 0, Player 2 gets 5.
+        ('d', 'c'): (5, 0),  # Player 1 defects, Player 2 cooperates: Player 1 gets 5, Player 2 gets 0.
+        ('d', 'd'): (1, 1)  # Both defect: each gets 1 point.
     }
 
-    def __init__(self, strategy1, strategy2, rounds=10):
+    def __init__(self, strategy1, strategy2, rounds):
+        """
+            Initializes the Prisoner's Dilemma game with two strategies and the number of rounds.
+
+            Parameters:
+            strategy1: The first strategy (Player 1).
+            strategy2: The second strategy (Player 2).
+            rounds: The number of rounds to play (random between 250 and 500)
+        """
         self.strategy1 = strategy1
         self.strategy2 = strategy2
         self.rounds = rounds
@@ -28,6 +38,13 @@ class PrisonersDilemma:
         return {''.ljust(50): '', 'Player 1'.ljust(40): move1, 'Player 2'.ljust(40): move2}
 
     def play_game(self):
+        """
+            Plays the entire game for the specified number of rounds and writes the results to a CSV file.
+
+            Returns:
+            The total points for Player 1 and Player 2 after all rounds.
+        """
+
         with open('axelrod-tournament-results.csv', mode='a', newline='') as csvfile:
             fieldnames = [''.ljust(50), 'Player 1'.ljust(40),
                           'Player 2'.ljust(40)]
@@ -49,6 +66,7 @@ class PrisonersDilemma:
                 'Player 1': self.p1_points,
                 'Player 2': self.p2_points
             }
+
             fieldnames = ['Total', 'Player 1', 'Player 2']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow(totals_data)

@@ -2,6 +2,9 @@ from strategy import Strategy
 
 
 class SuspiciousTitForTat(Strategy):
+    """
+        Tit for tat but starts with a defect
+    """
 
     def __init__(self):
         self.player_number = None

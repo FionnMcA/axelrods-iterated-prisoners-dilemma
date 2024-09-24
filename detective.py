@@ -1,14 +1,19 @@
 from strategy import Strategy
 
 
+
 class Detective(Strategy):
+    """
+       The Detective strategy starts by probing the opponent's behavior for the first 10 moves using a preset sequence
+       of cooperation and defection. After the probing phase, it analyzes the opponent's behavior and adjusts accordingly.
+    """
 
     def __init__(self):
         self.player_number = None
         self.probe = ['c', 'c', 'd', 'c', 'c', 'c', 'd', 'd', 'c', 'c']  # Probing sequence
         self.defect_count = 0
-        self.consecutive_cooperations = 0  # Track consecutive opponent cooperations
-        self.aggressive_mode = False  # Track if Detective is in aggressive mode
+        self.consecutive_cooperations = 0
+        self.aggressive_mode = False
 
     def set_player_number(self, player_number):
         self.player_number = player_number

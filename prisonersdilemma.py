@@ -28,16 +28,15 @@ class PrisonersDilemma:
         return {''.ljust(50): '', 'Player 1'.ljust(40): move1, 'Player 2'.ljust(40): move2}
 
     def play_game(self):
-        print('Playing the game')
         with open('axelrod-tournament-results.csv', mode='a', newline='') as csvfile:
             fieldnames = [''.ljust(50), 'Player 1'.ljust(40),
                           'Player 2'.ljust(40)]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             game_header = {
-                ''.ljust(50): '',
-                'Player 1'.ljust(40): self.strategy1.get_name(),
-                'Player 2'.ljust(40): self.strategy2.get_name()
+                ''.ljust(50): ''.ljust(40),
+                'Player 1'.ljust(40): self.strategy1.get_name().ljust(40),
+                'Player 2'.ljust(40): self.strategy2.get_name().ljust(40)
             }
             writer.writerow(game_header)
 
